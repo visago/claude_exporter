@@ -1,0 +1,12 @@
+services:
+  claude-exporter:
+    build: .
+    ports:
+      - "25283:25283"
+    volumes:
+      - "~/.claude/.credentials.json:/.claude/.credentials.json:ro"
+    environment:
+      CLAUDE_EXPORTER_LISTEN: ":25283"
+      CLAUDE_EXPORTER_INTERVAL: "30m"
+      # CLAUDE_EXPORTER_MODEL: "claude-haiku-4-5-20251001"
+    restart: unless-stopped
